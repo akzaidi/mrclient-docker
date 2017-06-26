@@ -26,7 +26,8 @@ RUN apt-get update \
         python-setuptools \
         sudo \
         gdebi-core \
-        wget
+        wget \
+	libssl-dev
 
 RUN wget https://s3.amazonaws.com/rstudio-dailybuilds/rstudio-server-1.1.246-amd64.deb
 RUN gdebi -nq rstudio-server-1.1.246-amd64.deb
