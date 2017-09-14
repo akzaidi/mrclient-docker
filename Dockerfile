@@ -21,4 +21,3 @@ RUN apt-get update -qq \
 	&& make \
 	&& gcc
 
-CMD[`R`]
