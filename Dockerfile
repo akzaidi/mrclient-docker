@@ -32,6 +32,19 @@ COPY EULA.txt MRC_EULA.txt
 COPY MKL_EULA.txt MKL_EULA.txt
 COPY MRO_EULA.txt MRO_EULA.txt
 
+# copy demo script
+COPY demo.R demo.R
+
+LABEL org.label-schema.license="https://mran.microsoft.com/faq/#licensing" \
+    org.label-schema.vendor="Microsoft Corporation, Dockerfile provided by Ali Zaidi" \
+	org.label-schema.name="Microsoft R Client" \
+	org.label-schema.description="Docker images of Microsoft R Client (R Client) with the Intel® Math Kernel Libraries (MKL)." \ 
+	org.label-schema.vcs-url=$VCS_URL \
+	org.label-schema.vcs-ref=$VCS_REF \
+	org.label-schema.build-date=$BUILD_DATE \
+	org.label-schema.schema-version="rc1" \
+	maintainer="Daniel Nüst <alizaidi@microsoft.com>"
+
 CMD ["/usr/bin/R"]
 
 
