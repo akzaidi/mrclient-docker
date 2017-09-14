@@ -17,34 +17,8 @@ RUN apt-get update -qq \
 	&& wget aka.ms/rclientlinux && tar -xvzf rclientlinux  \
         && cd MRC_Linux && chmod +x ./install.sh && ./install.sh -ams \
         && rm -rf /tmp/MRC_Linux \
-        && rm -rf /var/lib/apt/lists/*
+        && rm -rf /var/lib/apt/lists/* && \
+	&& make \
+	&& gcc
 
-# install rstudio server
-RUN apt-get update \
-        && apt-get install -y --no-install-recommends \
-        file \
-        git \
-        libapparmor1 \
-        libedit2 \
-        libcurl4-openssl-dev \
-        libssl-dev \
-        lsb-release \
-        psmisc \
-        python-setuptools \
-        sudo \
-        gdebi-core \
-        wget \
-	libssl-dev \
-	gfortran \
-	make \ 
-	gcc-c++
-
-RUN wget https://s3.amazonaws.com/rstudio-dailybuilds/rstudio-server-1.1.246-amd64.deb
-RUN gdebi -nq rstudio-server-1.1.246-amd64.deb
-RUN rm rstudio-server-1.1.246-amd64.deb
-
-# startup scripts
-EXPOSE 8787
-
-CMD rstudio-server start
-
+CMD[`R`]
