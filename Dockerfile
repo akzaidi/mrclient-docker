@@ -2,9 +2,14 @@ FROM ubuntu:16.04
 
 MAINTAINER Ali Zaidi <alikaz.zaidi@gmail.com>
 
-# create user and group
-RUN groupadd -r -g 2200 rstudio && \
-    useradd -rM -g rstudio -u 2200 rstudio
+## (Based on https://github.com/rocker-org/rocker/blob/master/r-base/Dockerfile)
+## Set a default user. Available via runtime flag `--user docker`
+## Add user to 'staff' group, granting them write privileges to /usr/local/lib/R/site.library
+## User should also have & own a home directory (e.g. for linked volumes to work properly).
+RUN useradd docker \
+	&& mkdir /home/docker \
+	&& chown docker:docker /home/docker \
+	&& addgroup docker staff
 
 # set working dir to tmp
 WORKDIR /tmp
@@ -20,4 +25,16 @@ RUN apt-get update -qq \
         && rm -rf /var/lib/apt/lists/* && \
 	&& make \
 	&& gcc
+
+# set work directory to home
+WORKDIR /home/docker
+
+# Print EULAs on every start of R to the user, because they were accepted at image build time
+COPY EULA.txt MRC_EULA.txt
+COPY MKL_EULA.txt MKL_EULA.txt
+COPY MRO_EULA.txt MRO_EULA.txt
+
+CMD ["/usr/bin/R"]
+
+
 
