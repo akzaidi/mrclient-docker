@@ -43,9 +43,6 @@ LABEL org.label-schema.license="https://mran.microsoft.com/faq/#licensing" \
 	org.label-schema.vcs-ref=$VCS_REF \
 	org.label-schema.build-date=$BUILD_DATE \
 	org.label-schema.schema-version="rc1" \
-	maintainer="Daniel Nüst <alizaidi@microsoft.com>"
+	maintainer="Ali Zaidi <alizaidi@microsoft.com>"
 
 CMD ["/usr/bin/R"]
-
-
-
