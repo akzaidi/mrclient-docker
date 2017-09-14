@@ -22,7 +22,7 @@ RUN apt-get update -qq \
 	&& wget aka.ms/rclientlinux && tar -xvzf rclientlinux  \
         && cd MRC_Linux && chmod +x ./install.sh && ./install.sh -ams \
         && rm -rf /tmp/MRC_Linux \
-        && rm -rf /var/lib/apt/lists/* && \
+        && rm -rf /var/lib/apt/lists/* \
 	&& make \
 	&& gcc
 
