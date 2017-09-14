@@ -23,8 +23,7 @@ RUN apt-get update -qq \
         && cd MRC_Linux && chmod +x ./install.sh && ./install.sh -ams \
         && rm -rf /tmp/MRC_Linux \
         && rm -rf /var/lib/apt/lists/* \
-	&& make \
-	&& gcc
+	&& apt-get install make gcc
 
 # set work directory to home
 WORKDIR /home/docker
