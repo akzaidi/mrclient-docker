@@ -45,12 +45,4 @@ LABEL org.label-schema.license="https://mran.microsoft.com/faq/#licensing" \
 	org.label-schema.schema-version="rc1" \
 	maintainer="Ali Zaidi <alizaidi@microsoft.com>"
 
-# start rstudio server
-RUN set -e \
-      && useradd -m -d /home/rstudio rstudio \
-      && echo rstudio:rstudio \
-        | chpasswd
-
-EXPOSE 8787
-
-CMD ["/usr/lib/rstudio-server/bin/rserver", "--server-daemonize=0", "--server-app-armor-enabled=0"]
+CMD ["/usr/bin/R"]
