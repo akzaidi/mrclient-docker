@@ -18,12 +18,11 @@ WORKDIR /tmp
 RUN apt-get update -qq \
         && apt-get dist-upgrade -y \
         && apt-get install -y libunwind8 gettext libssl-dev libcurl3-dev zlib1g libicu-dev \
-        && apt-get install -y wget \
+        && apt-get install -y wget make gcc \
 	&& wget aka.ms/rclientlinux && tar -xvzf rclientlinux  \
         && cd MRC_Linux && chmod +x ./install.sh && ./install.sh -ams \
         && rm -rf /tmp/MRC_Linux \
-        && rm -rf /var/lib/apt/lists/* \
-	&& apt-get install make gcc
+        && rm -rf /var/lib/apt/lists/*
 
 # set work directory to home
 WORKDIR /home/docker
