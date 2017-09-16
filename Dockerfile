@@ -45,4 +45,4 @@ LABEL org.label-schema.license="https://mran.microsoft.com/faq/#licensing" \
 	org.label-schema.schema-version="rc1" \
 	maintainer="Ali Zaidi <alizaidi@microsoft.com>"
 
-CMD ["/usr/bin/R --vanilla"]
+CMD ["/usr/bin/R"]
