@@ -13,3 +13,5 @@ scoreDF <- rxPredict(res1, data = infert,
 roc1 <- rxRoc(actualVarName = "isCase", predVarNames = "Probability", data = scoreDF)
 plot(roc1)
 rxAuc(roc1)
+
+sessionInfo()
