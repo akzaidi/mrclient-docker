@@ -11,18 +11,15 @@ RUN useradd docker \
 	&& chown docker:docker /home/docker \
 	&& addgroup docker staff
 
-# set working dir to tmp
-WORKDIR /tmp
-
 # Install R Client
 RUN apt-get update -qq \
-        && apt-get dist-upgrade -y \
-        && apt-get install -y libunwind8 gettext libssl-dev libcurl3-dev zlib1g libicu-dev \
-        && apt-get install -y wget make gcc \
-	&& wget aka.ms/rclientlinux && tar -xvzf rclientlinux  \
-        && cd MRC_Linux && chmod +x ./install.sh && ./install.sh -ams \
-        && rm -rf /tmp/MRC_Linux \
-        && rm -rf /var/lib/apt/lists/*
+	&& apt-get dist-upgrade -y \
+	&& apt-get install apt-transport-https \
+	&& wget http://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb \
+	&& dpkg -i packages-microsoft-prod.deb \
+	&& apt-get update \
+	&& apt-get install microsoft-r-client-packages-3.4.16
+
 
 # set work directory to home
 WORKDIR /home/docker
