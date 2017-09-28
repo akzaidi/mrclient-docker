@@ -20,8 +20,8 @@ RUN apt-get update -qq \
 	&& dpkg -i packages-microsoft-prod.deb \
 	&& apt-get update \
 	&& apt-get install microsoft-r-client-packages-3.4.1 -y \
-	&& apt-get install microsoft-r-client-mml-r-3.4.1 -y \
-	&& apt-get install microsoft-r-client-mlm-r-3.4.1 -y \
+	&& apt-get install microsoft-r-client-mml-3.4.1 -y \
+	&& apt-get install microsoft-r-client-mlm-3.4.1 -y \
 	&& rm *.deb
 
 
