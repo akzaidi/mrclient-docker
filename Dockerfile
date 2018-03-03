@@ -18,7 +18,9 @@ RUN apt-get update -qq \
 	&& wget http://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb  \
 	&& dpkg -i packages-microsoft-prod.deb \
 	&& apt-get update \
-	&& apt-get install -y microsoft-r-client-packages-3.4.3
+	&& apt-get install -y microsoft-r-client-packages-3.4.3 \\
+	&& apt-get install -y microsoft-r-client-mml-3.4.3 \\
+	&& apt-get install -y microsoft-r-client-mlm-3.4.3
 
 # set work directory to home
 WORKDIR /home/docker
