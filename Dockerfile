@@ -13,17 +13,10 @@ RUN useradd docker \
 
 # Install R Client
 RUN apt-get update -qq \
-	&& apt-get dist-upgrade -y \
-	&& apt-get install -y wget make gcc \
-	&& apt-get install apt-transport-https -y \
-	&& wget http://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb \
+	&& wget http://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb  \
 	&& dpkg -i packages-microsoft-prod.deb \
 	&& apt-get update \
-	&& apt-get install microsoft-r-client-packages-3.4.3 -y \
-	&& apt-get install microsoft-r-client-mml-3.4.3 -y \
-	&& apt-get install microsoft-r-client-mlm-3.4.3 -y \
-	&& rm *.deb
-
+	&& apt-get install microsoft-r-client-packages-3.4.3
 
 # set work directory to home
 WORKDIR /home/docker
