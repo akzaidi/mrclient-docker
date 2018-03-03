@@ -14,7 +14,8 @@ RUN useradd docker \
 # Install R Client
 RUN apt-get update -qq \
 	&& apt-get dist-upgrade -y \
-	&& apt-get install make gcc \
+	&& apt-get install -y make gcc \
+	&& apt-get install -y libunwind8 gettext libssl-dev libcurl3-dev zlib1g libicu-dev \
 	&& apt-get install -y wget \
 	&& apt-get install -y apt-transport-https \
 	&& wget http://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb  \
